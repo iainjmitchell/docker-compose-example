@@ -6,8 +6,8 @@ Run up the persistent/ orchestrated services
 
 ```
 docker-compose up -d rabbit
+docker-compose up -d mobilegateway
 ```
-
 
 Then, run the test
 
