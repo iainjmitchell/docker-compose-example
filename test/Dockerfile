@@ -1,14 +1,11 @@
-FROM node:4.4.3
-
-RUN apt-get install libstdc++6
+FROM ruby:2.1
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-COPY package.json /usr/src/app/
-RUN npm install
+COPY Gemfile /usr/src/app/
+COPY MobileTest.rb /usr/src/app/
+RUN bundle install --path gems
 
 COPY . /usr/src/app
-CMD [ "npm", "test" ]
-
-
+CMD [ "ruby", "MobileTest.rb" ]

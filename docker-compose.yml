@@ -2,9 +2,14 @@ version: '2'
 services:
   rabbit:
     image: rabbitmq:3.6.2-management
+  mobilegateway:
+    build: mobilegateway/
+    links: 
+      - rabbit
   test:
     build: test/
     links:
       - rabbit
+      - mobilegateway
     volumes:
       - ./test-results:/usr/src/app/test-results
